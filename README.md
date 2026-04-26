@@ -1,39 +1,31 @@
 # Vettripath - Student Placement Management System
 
-Full-stack Student Placement Management System built with Spring Boot and React.
+A full-stack Student Placement Management System built using Spring Boot and React, designed to streamline campus workflows for managing students, colleges, placements, and certifications.
 
-## Why This Project Matters
+## Overview
 
-Vettripath solves a common campus workflow: managing students, colleges, placements, and certificates in one system with role-protected APIs and a practical UI.
+Vettripath is a centralized platform that simplifies placement management by providing:
 
-This project demonstrates end-to-end product development skills:
-- Backend architecture with controllers, services, repositories, and validation
-- Frontend CRUD workflows with search, filtering, and update flows
-- Real database integration with PostgreSQL
-- Environment-aware configuration for local and cloud-style DB usage
+- Role-protected APIs
+- Structured backend architecture
+- Interactive frontend dashboards
+- Real-world database integration
 
-## Highlights
+It demonstrates end-to-end product engineering, from backend services to user-facing UI.
 
-- Complete CRUD for Students, Colleges, Placements, and Certificates
-- Authentication flow with register, login, and email verification
-- Dashboard statistics for core entities
-- Role-based API protection using `role` query parameter
-- Frontend aligned with backend payloads and validation constraints
+## Key Features
+
+- Authentication system (Register, Login, Email Verification)
+- Student Management (CRUD + Search + Filters)
+- College Management
+- Placement Tracking (Year and Qualification filters)
+- Certificate Management
+- Dashboard Analytics (entity counts)
+- Role-based API protection (`role=ADMIN`)
 
 ## Screenshots
 
-Add screenshots to showcase key flows in your portfolio.
-
-Suggested file path:
-- `frontend/public/screenshots/`
-
-Suggested captures:
-- Dashboard overview
-- Student create/update/search flow
-- Placement management flow
-- Auth (register/login/verify) flow
-
-Template:
+Add your UI screenshots here to improve project visibility.
 
 ```md
 ![Dashboard](frontend/public/screenshots/dashboard.png)
@@ -43,136 +35,110 @@ Template:
 
 ## Tech Stack
 
-- Backend: Java 17, Spring Boot 4.0.5, Spring Data JPA, Bean Validation, Maven
-- Frontend: React 19, Vite 8, ESLint
-- Database: PostgreSQL (local default, Neon-compatible via env vars)
+Backend:
+
+- Java 17+
+- Spring Boot
+- Spring Data JPA
+- Bean Validation
+- Maven
+
+Frontend:
+
+- React 19
+- Vite
+- ESLint
+
+Database:
+
+- PostgreSQL (Local / Neon Cloud)
 
 ## Project Structure
 
 ```text
 TNS_Assignment/
-├── demo/                           # Spring Boot backend
-│   ├── src/main/java/com/example/demo/
-│   │   ├── controller/
-│   │   ├── model/
-│   │   ├── repository/
-│   │   ├── service/
-│   │   └── config/
-│   ├── src/main/resources/application.properties
-│   ├── .env.properties.example
-│   ├── pom.xml
-│   └── mvnw
-├── frontend/                       # React + Vite frontend
+├── demo/                # Spring Boot backend
+│   ├── controller/
+│   ├── model/
+│   ├── repository/
+│   ├── service/
+│   └── config/
+├── frontend/            # React frontend
 │   ├── src/
-│   │   ├── App.jsx
-│   │   └── api.js
-│   ├── vite.config.js
-│   └── package.json
+│   └── api.js
 └── README.md
 ```
 
-## Core Functional Coverage
+## Core Functionalities
 
-- Students: add, edit, delete, list, search by hall ticket, search by name
-- Colleges: add, edit, delete, list
-- Placements: add, edit, delete, list, filter by year
-- Certificates: add, edit, delete, list
-- Auth: register user, login, verify email token
-- Dashboard: total counts for students, colleges, placements, certificates, users
+Students:
 
-## Architecture Summary
+- Add, update, delete
+- Search by name and hall ticket
+- Pagination and filtering
 
-- Controller layer handles HTTP routes and request mapping
-- Service layer contains business logic and access checks
-- Repository layer uses Spring Data JPA for persistence
-- Validation annotations enforce payload correctness
-- Frontend API module centralizes request handling and error parsing
+Colleges:
 
-## API Notes
+- Full CRUD operations
 
-- Most management endpoints require query parameter `role`
-- Use `role=ADMIN` for all CRUD and dashboard routes
-- `ADMIN` self-registration is intentionally blocked by backend
+Placements:
 
-### Auth
+- Manage placement records
+- Filter by year and qualification
+
+Certificates:
+
+- CRUD operations
+
+Dashboard:
+
+- Total counts of all entities
+
+## Architecture
+
+- Controller Layer: Handles HTTP requests
+- Service Layer: Business logic
+- Repository Layer: Database interaction (JPA)
+- Validation Layer: Input validation
+- Frontend API Module: Centralized API handling
+
+## API Overview
+
+Authentication:
+
 - `POST /auth/register`
 - `POST /auth/login`
 - `GET /auth/verify?token=...`
 
-### Dashboard
+Dashboard:
+
 - `GET /dashboard/stats?role=ADMIN`
 
-### Students
-- `POST /students?role=ADMIN`
-- `PUT /students/{id}?role=ADMIN`
-- `GET /students/{id}?role=ADMIN`
-- `GET /students?role=ADMIN`
-- `GET /students/page?role=ADMIN&page=0&size=10&sortBy=id&direction=asc`
-- `GET /students/hall/{hallTicket}?role=ADMIN`
-- `GET /students/name/{name}?role=ADMIN`
-- `GET /students/search?role=ADMIN&name=&course=&year=`
-- `DELETE /students/{id}?role=ADMIN`
+Students:
 
-### Colleges
-- `POST /colleges?role=ADMIN`
-- `PUT /colleges/{id}?role=ADMIN`
-- `GET /colleges/{id}?role=ADMIN`
-- `GET /colleges?role=ADMIN`
-- `DELETE /colleges/{id}?role=ADMIN`
+- CRUD, search, and pagination endpoints
 
-### Placements
-- `POST /placements?role=ADMIN`
-- `PUT /placements/{id}?role=ADMIN`
-- `GET /placements/{id}?role=ADMIN`
-- `GET /placements?role=ADMIN`
-- `GET /placements/year/{year}?role=ADMIN`
-- `GET /placements/qualification/{qualification}?role=ADMIN`
-- `DELETE /placements/{id}?role=ADMIN`
+Colleges:
 
-### Certificates
-- `POST /certificates?role=ADMIN`
-- `PUT /certificates/{id}?role=ADMIN`
-- `GET /certificates/{id}?role=ADMIN`
-- `GET /certificates?role=ADMIN`
-- `DELETE /certificates/{id}?role=ADMIN`
+- CRUD endpoints
 
-## Local Setup
+Placements:
 
-## Prerequisites
+- CRUD and filter endpoints
 
-- Java 17 or higher
-- Node.js 18+ and npm
-- PostgreSQL running locally on port 5432, or Neon credentials
+Certificates:
 
-### Linux Java Setup
+- CRUD endpoints
 
-If you see errors like `class file version mismatch` or `release version 17 not supported`, your shell is likely using an older Java.
+Note: Most endpoints require `?role=ADMIN`.
 
-Install and select JDK 21:
+## Getting Started
 
-```bash
-sudo apt update
-sudo apt install -y openjdk-21-jdk
-sudo update-alternatives --config java
-sudo update-alternatives --config javac
-java -version
-javac -version
-```
+Prerequisites:
 
-Expected: both versions should be 17 or higher.
-
-If `java -version` still shows 8 after switching alternatives, check shell overrides:
-
-```bash
-grep -nE 'JAVA_HOME|java-8-openjdk|PATH=.*java' ~/.bashrc ~/.profile ~/.bash_profile 2>/dev/null
-```
-
-Then set:
-
-```bash
-export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
-export PATH=$JAVA_HOME/bin:$PATH
-```
+- Java 17+
+- Node.js 18+
+- PostgreSQL
 
 ## Backend Setup
 
@@ -182,7 +148,7 @@ cp .env.properties.example .env.properties
 ./mvnw spring-boot:run
 ```
 
-Backend runs at `http://localhost:8080`.
+Runs at: `http://localhost:8080`
 
 ## Frontend Setup
 
@@ -192,26 +158,17 @@ npm install
 npm run dev
 ```
 
-Frontend runs at `http://localhost:5173`.
-
-Vite proxy forwards `/api/*` to `http://localhost:8080`.
+Runs at: `http://localhost:5173`
 
 ## Configuration
 
-Backend config file:
-- `demo/src/main/resources/application.properties`
+Environment variables:
 
-Local secrets file:
-- `demo/.env.properties`
-- Template: `demo/.env.properties.example`
-
-Important env keys:
 - `NEON_JDBC_URL`
 - `NEON_DB_USER`
 - `NEON_DB_PASSWORD`
 - `APP_MAIL_USERNAME`
 - `APP_MAIL_PASSWORD`
-- `APP_VERIFICATION_BASE_URL`
 
 ## Validation Commands
 
@@ -225,44 +182,41 @@ cd demo
 Frontend:
 
 ```bash
-cd frontend
-npm run lint
 npm run build
+npm run lint
 ```
 
 ## Troubleshooting
 
-### Frontend shows `502 Bad Gateway` on `/api/*`
+502 Bad Gateway:
 
-Cause:
-- Backend is not running on port 8080
+- Backend is not running
+- Start backend on port 8080
 
-Fix:
-- Start backend first with `./mvnw spring-boot:run`
-- Confirm backend port with `ss -ltn '( sport = :8080 )'`
+Java Version Errors:
 
-### Backend compiles fail with Java class version errors
+- Ensure Java 17+ is active
 
-Cause:
-- Java runtime or compiler is older than required
+```bash
+java -version
+javac -version
+```
 
-Fix:
-- Use JDK 17+ for both `java` and `javac`
+## Resume Highlights
 
-## Resume-Ready Talking Points
+- Built a scalable full-stack system with Spring Boot and React
+- Designed modular backend architecture with clean separation of concerns
+- Implemented role-based access control and authentication flows
+- Developed real-world CRUD workflows with filtering and validation
+- Integrated dashboard analytics and email verification system
 
-- Built and integrated a multi-module full-stack application with role-protected APIs
-- Designed entity workflows spanning 4 business modules with complete CRUD and validations
-- Implemented frontend-backend contract alignment and robust API error handling
-- Added email verification and dashboard analytics endpoints for practical product behavior
+## Future Improvements
 
-## Roadmap
-
-- Replace role query parameter with token-based authorization
-- Add automated backend integration tests and frontend component tests
-- Add pagination and advanced filtering on all list views
-- Add deployment manifests for one-command cloud deployment
+- Replace role query parameter with JWT authentication
+- Add automated testing (backend and frontend)
+- Implement advanced filtering and pagination
+- Deploy with Docker and CI/CD pipelines
 
 ## License
 
-This project is part of TNS Assignment.
+This project was developed as part of an academic assignment.
