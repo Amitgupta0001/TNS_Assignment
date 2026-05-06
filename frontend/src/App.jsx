@@ -456,6 +456,12 @@ function App() {
           React frontend connected to your Spring Boot backend for student,
           college, placement, certificate, and auth workflows.
         </p>
+        <div className="hero-meta" aria-label="System summary">
+          <span>Frontend: React 19</span>
+          <span>Backend: Spring Boot 4.0.5</span>
+          <span>Database: PostgreSQL</span>
+          <span>Active role: {apiRole}</span>
+        </div>
         <button className="refresh" onClick={handleRefresh} disabled={loading}>
           {loading ? 'Working...' : 'Refresh Data'}
         </button>

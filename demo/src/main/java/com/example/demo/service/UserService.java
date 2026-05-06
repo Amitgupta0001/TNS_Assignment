@@ -47,7 +47,12 @@ public class UserService {
         token.setUser(savedUser);
         tokenRepository.save(token);
 
-        emailService.sendVerificationEmail(savedUser.getEmail(), tokenValue);
+        try {
+            emailService.sendVerificationEmail(savedUser.getEmail(), tokenValue);
+        } catch (Exception e) {
+            // Email sending failed, but allow registration to proceed (development mode)
+            System.out.println("Warning: Email verification could not be sent: " + e.getMessage());
+        }
         return savedUser;
     }
 
