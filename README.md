@@ -275,9 +275,7 @@ npm -v           # Should be 8+
 
 #### 1. Clone Repository
 ```bash
-cd ~/Desktop/GEN_AI/TNS
 git clone https://github.com/Amitgupta0001/TNS_Assignment.git
-cd TNS_Assignment
 ```
 
 #### 2. Backend Setup
@@ -327,7 +325,7 @@ psql -h localhost -U postgres -d placement_db -c "SELECT version();"
 
 #### Terminal 2: Start Backend
 ```bash
-cd ~/Desktop/GEN_AI/TNS/TNS_Assignment/demo
+cd ~/TNS_Assignment/demo
 
 # Run using Maven
 mvn spring-boot:run
@@ -340,7 +338,7 @@ java -jar target/demo-0.0.1-SNAPSHOT.jar
 
 #### Terminal 3: Start Frontend
 ```bash
-cd ~/Desktop/GEN_AI/TNS/TNS_Assignment/frontend
+cd ~/TNS_Assignment/frontend
 
 # Start development server
 npm run dev
@@ -672,19 +670,6 @@ curl -s "http://localhost:8080/students?page=0&size=10&role=ADMIN" | jq .
 ```
 
 ---
-
-## 📈 Performance & Metrics
-
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| Security Score | 1/5 ⭐ | 5/5 ⭐⭐⭐⭐⭐ | +400% |
-| Error Rate | 15% | 2% | -87% |
-| Response Time | 50-100ms | 40-80ms | -20% |
-| Memory Usage | 300MB | 280MB | -7% |
-| Code Quality | 2/5 | 5/5 | +150% |
-
----
-
 ## 🚀 Deployment
 
 ### Build for Production
@@ -765,20 +750,6 @@ npm install
 ```
 
 ---
-
-## 📊 Project Statistics
-
-- **Total Java Files**: 31
-- **API Endpoints**: 16+
-- **Database Tables**: 10
-- **Error Handlers**: 8
-- **Services**: 7
-- **Controllers**: 6
-- **Repositories**: 6
-- **Models**: 6
-
----
-
 ## ✅ Final Status
 
 **Overall Status**: 🟢 PRODUCTION READY
